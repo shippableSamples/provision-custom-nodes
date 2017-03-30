@@ -10,6 +10,7 @@ Please follow these steps to provision a custom node-
     b. `FRIENDLY_NAME` is the name of your clusterNode.
 
     c. `IS_SHIPPABLE_INITIALIZED` should be set to `false`, if you want to run the node initialization script yourself. If it is set to `true` shippable will run the script for you, but before provisioning the node you have to run the command on your node to create a shippable user and ssh authorization(This command is available in your subscriptions/settings/nodes, click on `add node` and copy the command).
+    ![command](https://cloud.githubusercontent.com/assets/16793274/24504698/e0b37a92-1574-11e7-832f-55d0ce8364de.png)
 
     d. `NODE_LOCATION` is the IP of your node.
 

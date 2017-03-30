@@ -105,5 +105,4 @@ function _saveInitScript(bag, next) {
   );
 }
 
-// call createClusterNode
 createClusterNode();
