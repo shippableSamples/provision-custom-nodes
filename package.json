@@ -1,0 +1,10 @@
+{
+  "name": "provision-custom-nodes",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "async": "^2.2.0",
+    "fs": "0.0.1-security",
+    "request": "^2.81.0",
+    "util": "^0.10.3"
+  }
+}
