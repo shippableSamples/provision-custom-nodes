@@ -19,3 +19,4 @@ Please follow these steps to provision a custom node-
     f. `NODE_INIT_SCRIPT` is the name of script file. It contains the name of OS and docker version. You can check all the supported OS and docker versions [here](https://github.com/Shippable/node/tree/master/scripts). An example value is `Ubuntu_16.04_Docker_1.13.sh`.
 3. Install node packages: `sudo npm install`
 4. To provision custom node run ` node createCustomNode.js`. After this completes, node initialization script will be saved in `initScript.sh`. You can run it on your machine to use it as a Shippable node.
+5. Free plans can provision minions, however Shippable API access is for paid plans only.
