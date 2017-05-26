@@ -1,6 +1,10 @@
-## provision custom nodes
+## Provision custom nodes
 
-Please follow these steps to provision a custom node-
+This sample project automates provisioning of a [BYON custom node](http://docs.shippable.com/getting-started/byon-overview/) on Shippable's [CI/CD and DevOps platform](https://www.shippable.com) by using the [Shippable REST API](http://docs.shippable.com/reference/api-overview/).
+
+Please note that API access is restricted to paid accounts. If you want temporary access to the API for a POC project, please contact us at [support@shippable.com](mailto:support@shippable.com).
+
+Follow these steps to provision a custom node -
 
 1. clone this project
 2. update `config.json` to have correct values.
@@ -19,4 +23,4 @@ Please follow these steps to provision a custom node-
     f. `NODE_INIT_SCRIPT` is the name of script file. It contains the name of OS and docker version. You can check all the supported OS and docker versions [here](https://github.com/Shippable/node/tree/master/scripts). An example value is `Ubuntu_16.04_Docker_1.13.sh`.
 3. Install node packages: `sudo npm install`
 4. To provision custom node run ` node createCustomNode.js`. After this completes, node initialization script will be saved in `initScript.sh`. You can run it on your machine to use it as a Shippable node.
-5. Free plans can provision minions, however Shippable API access is for paid plans only.
+
