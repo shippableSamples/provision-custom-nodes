@@ -19,7 +19,7 @@ function createClusterNode() {
       if (err)
         console.log('Failed to post clusterNode with error: ', err);
       else {
-        console.log('successfully created clusterNode');
+        console.log('Created clusterNode object in Shippable. Run initScript.sh on the node to complete initialization');
       }
     }
   );
