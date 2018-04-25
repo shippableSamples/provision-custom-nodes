@@ -20,7 +20,9 @@ Follow these steps to provision a custom node -
 
     e. `SUBSCRIPTION_ID` is the `id` of subscription for which you want to add this node.
 
-    f. `NODE_INIT_SCRIPT` is the name of script file. It contains the name of OS and docker version. You can check all the supported OS and docker versions [here](https://github.com/Shippable/node/tree/master/scripts). An example value is `Ubuntu_16.04_Docker_1.13.sh`.
-3. Install node packages: `sudo npm install`
+    f. `NODE_INIT_SCRIPT` is the name of script file that will be downloaded to use for initializing your new node.  The name is combination of architecture, operating system, and Docker version. You can check all the supported versions [here](https://github.com/Shippable/node/tree/master/initScripts). This argument should be the script path from inside the `initScripts` directory.  An example value is `x86_64/Ubuntu_16.04/Docker_1.13.sh`.
+
+    g. `CLUSTER_ID` is an integer that represents the unique ID of the node pool to which you are adding the node.  You can get this ID from the URL when visiting your subscription node pool page.  This parameter is optional.  If left as null, the script will automatically fetch the default CLUSTER_ID for your subscription.
+3. Install node packages: `npm install`
 4. To provision custom node run ` node createCustomNode.js`. After this completes, node initialization script will be saved in `initScript.sh`. You can run it on your machine to use it as a Shippable node.
 
