@@ -1,10 +1,11 @@
 {
-  "SHIPPABLE_API_TOKEN": "specify-your-api-token-here",
+  "SHIPPABLE_API_TOKEN": "your Shippable API token",
   "FRIENDLY_NAME": "my-node",
   "IS_SHIPPABLE_INITIALIZED": false,
-  "NODE_LOCATION": "127.0.0.1",
+  "NODE_LOCATION": "your node IP address",
   "NODE_TYPE_CODE": 7000,
   "SSH_PORT": 22,
-  "NODE_INIT_SCRIPT": "Ubuntu_16.04_Docker_1.13.sh",
-  "SUBSCRIPTION_ID": "specify-your-subscription-id-here"
+  "NODE_INIT_SCRIPT": "x86_64/Ubuntu_16.04/Docker_1.13.sh",
+  "SUBSCRIPTION_ID": "your Shippable subscription ID",
+  "CLUSTER_ID": null
 }

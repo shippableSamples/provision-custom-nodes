@@ -11,6 +11,7 @@ function createClusterNode() {
 
   async.series([
       _readConfigs.bind(null, bag),
+      _getDefaultClusterIdFromSubscription.bind(null, bag),
       _postClusterNode.bind(null, bag),
       _getNodeInitScript.bind(null, bag),
       _saveInitScript.bind(null, bag)
@@ -51,12 +52,35 @@ function _readConfigs(bag, next) {
   );
 }
 
-function _postClusterNode(bag, next) {
-  console.log('creating clusterNode');
-
+function _getDefaultClusterIdFromSubscription(bag, next) {
   bag.shippableAdapter = new ShippableAdapter(bag.configs.SHIPPABLE_API_TOKEN,
     bag.apiUrl);
+  
+  // skip if user supplied the clusterId
+  if (bag.configs.CLUSTER_ID) return next();
 
+  console.log('fetching default cluster for subscription');
+  bag.shippableAdapter.getSubscriptionById(bag.configs.SUBSCRIPTION_ID, 
+    function (err, sub) {
+      
+      if (err)
+        return next(err);
+      try {
+        bag.sub = JSON.parse(sub);
+      } catch (e) {
+        return next('Unable to parse response');
+      }
+      if (!bag.sub.defaultClusterId)
+        return next('No default cluster present in subscription.');
+      bag.configs.CLUSTER_ID = bag.sub.defaultClusterId;
+      return next();
+    }
+  );
+}
+
+function _postClusterNode(bag, next) {
+  console.log('creating clusterNode');
+  
   var clusterNodeBody = {
     friendlyName: bag.configs.FRIENDLY_NAME,
     isShippableInitialized: bag.configs.IS_SHIPPABLE_INITIALIZED,
@@ -64,7 +88,8 @@ function _postClusterNode(bag, next) {
     nodeTypeCode: bag.configs.NODE_TYPE_CODE,
     sshPort: bag.configs.SSH_PORT,
     nodeInitScript: bag.configs.NODE_INIT_SCRIPT,
-    subscriptionId: bag.configs.SUBSCRIPTION_ID
+    subscriptionId: bag.configs.SUBSCRIPTION_ID,
+    clusterId: bag.configs.CLUSTER_ID
   };
 
   bag.shippableAdapter.postClusterNode(clusterNodeBody,

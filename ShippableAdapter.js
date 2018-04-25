@@ -109,6 +109,12 @@ function _parseResponse(bag, next) {
   return next();
 }
 
+ShippableAdapter.prototype.getSubscriptionById =
+  function (id, callback) {
+    var url = '/subscriptions/' + id;
+    this.get(url, callback);
+  };
+
 ShippableAdapter.prototype.getNodeInitScript =
   function (clusterNodeId, callback) {
     var url = '/clusterNodes/' + clusterNodeId + '/initScript';
